@@ -1,13 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { HeroSection } from "@/components/hero-section";
+import { VendorDashboard } from "@/components/vendor-dashboard";
+import { SupplierDashboard } from "@/components/supplier-dashboard";
+
+type ViewType = "home" | "vendor" | "supplier";
 
 const Index = () => {
+  const [currentView, setCurrentView] = useState<ViewType>("home");
+
+  const handleVendorClick = () => setCurrentView("vendor");
+  const handleSupplierClick = () => setCurrentView("supplier");
+  const handleBackToHome = () => setCurrentView("home");
+
+  if (currentView === "vendor") {
+    return <VendorDashboard onBack={handleBackToHome} />;
+  }
+
+  if (currentView === "supplier") {
+    return <SupplierDashboard onBack={handleBackToHome} />;
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <HeroSection 
+      onVendorClick={handleVendorClick} 
+      onSupplierClick={handleSupplierClick} 
+    />
   );
 };
 

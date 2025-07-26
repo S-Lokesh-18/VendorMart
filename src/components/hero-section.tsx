@@ -1,0 +1,141 @@
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Store, Truck, Users, MessageCircle } from "lucide-react";
+import heroImage from "@/assets/hero-street-food.jpg";
+
+interface HeroSectionProps {
+  onVendorClick: () => void;
+  onSupplierClick: () => void;
+}
+
+export const HeroSection = ({ onVendorClick, onSupplierClick }: HeroSectionProps) => {
+  return (
+    <div className="min-h-screen flex flex-col">
+      {/* Header */}
+      <header className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-vendor to-accent rounded-lg flex items-center justify-center">
+                <Store className="w-5 h-5 text-white" />
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-vendor to-accent bg-clip-text text-transparent">
+                Vendor Mart
+              </h1>
+            </div>
+            <nav className="hidden md:flex space-x-6">
+              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+                Features
+              </a>
+              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
+                How it Works
+              </a>
+              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+                Contact
+              </a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section 
+        className="flex-1 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 container mx-auto px-4 py-20 flex items-center min-h-[600px]">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              Connecting Street Food
+              <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                Vendors & Suppliers
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl mb-12 text-gray-200 max-w-3xl mx-auto">
+              India's first dedicated marketplace for street food raw materials. 
+              Find trusted suppliers, get best prices, and grow your business together.
+            </p>
+            
+            {/* CTA Cards */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+              <Card className="p-8 bg-white/95 backdrop-blur-sm hover:bg-white transition-all duration-300 cursor-pointer group" onClick={onVendorClick}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-vendor rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <Store className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">I'm a Vendor</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Find reliable suppliers for your street food business
+                  </p>
+                  <Button variant="vendor" size="lg" className="w-full">
+                    Find Suppliers
+                  </Button>
+                </div>
+              </Card>
+
+              <Card className="p-8 bg-white/95 backdrop-blur-sm hover:bg-white transition-all duration-300 cursor-pointer group" onClick={onSupplierClick}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-supplier rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <Truck className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">I'm a Supplier</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Connect with thousands of street food vendors
+                  </p>
+                  <Button variant="supplier" size="lg" className="w-full">
+                    Start Selling
+                  </Button>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold mb-4">Why Choose Vendor Mart?</h3>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Built specifically for India's street food ecosystem
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-vendor/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-vendor" />
+              </div>
+              <h4 className="text-xl font-bold mb-3">Trusted Community</h4>
+              <p className="text-muted-foreground">
+                Verified suppliers and vendors with ratings and reviews
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-supplier/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="w-8 h-8 text-supplier" />
+              </div>
+              <h4 className="text-xl font-bold mb-3">Community Chat</h4>
+              <p className="text-muted-foreground">
+                Connect, share tips, and build relationships in real-time
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Store className="w-8 h-8 text-accent" />
+              </div>
+              <h4 className="text-xl font-bold mb-3">Local Focus</h4>
+              <p className="text-muted-foreground">
+                Find suppliers in your area for fresh, timely deliveries
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
