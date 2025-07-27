@@ -37,38 +37,55 @@ export const ContactPage = ({ onBack }: ContactPageProps) => {
             {/* Contact Form */}
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
-              <form className="space-y-6">
+              <form 
+                className="space-y-6"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.target as HTMLFormElement);
+                  const subject = `Contact Form: ${formData.get('subject')}`;
+                  const body = `
+Name: ${formData.get('firstName')} ${formData.get('lastName')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone')}
+Subject: ${formData.get('subject')}
+Message: ${formData.get('message')}
+                  `;
+                  window.open(`mailto:vendormart22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+                }}
+              >
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium mb-2 block">First Name</label>
-                    <Input placeholder="Enter your first name" />
+                    <Input name="firstName" placeholder="Enter your first name" required />
                   </div>
                   <div>
                     <label className="text-sm font-medium mb-2 block">Last Name</label>
-                    <Input placeholder="Enter your last name" />
+                    <Input name="lastName" placeholder="Enter your last name" required />
                   </div>
                 </div>
                 
                 <div>
                   <label className="text-sm font-medium mb-2 block">Email</label>
-                  <Input type="email" placeholder="Enter your email" />
+                  <Input name="email" type="email" placeholder="Enter your email" required />
                 </div>
                 
                 <div>
                   <label className="text-sm font-medium mb-2 block">Phone Number</label>
-                  <Input type="tel" placeholder="Enter your phone number" />
+                  <Input name="phone" type="tel" placeholder="Enter your phone number" />
                 </div>
                 
                 <div>
                   <label className="text-sm font-medium mb-2 block">Subject</label>
-                  <Input placeholder="What's this about?" />
+                  <Input name="subject" placeholder="What's this about?" required />
                 </div>
                 
                 <div>
                   <label className="text-sm font-medium mb-2 block">Message</label>
                   <Textarea 
+                    name="message"
                     placeholder="Tell us how we can help you..." 
                     className="min-h-[120px]"
+                    required
                   />
                 </div>
                 
@@ -87,7 +104,7 @@ export const ContactPage = ({ onBack }: ContactPageProps) => {
                   </div>
                   <div>
                     <h4 className="font-semibold">Email Us</h4>
-                    <p className="text-muted-foreground">support@vendormart.com</p>
+                    <p className="text-muted-foreground">vendormart22@gmail.com</p>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground">

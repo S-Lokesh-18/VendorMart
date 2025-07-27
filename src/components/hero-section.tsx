@@ -69,7 +69,12 @@ export const HeroSection = ({ onVendorClick, onSupplierClick, onContactClick }: 
                   <p className="text-muted-foreground mb-6">
                     Find reliable suppliers for your street food business
                   </p>
-                  <Button variant="vendor" size="lg" className="w-full">
+                  <Button 
+                    variant="vendor" 
+                    size="lg" 
+                    className="w-full"
+                    onClick={() => window.open('https://bitwisebinary.com', '_blank')}
+                  >
                     Find Suppliers
                   </Button>
                 </div>
@@ -84,7 +89,12 @@ export const HeroSection = ({ onVendorClick, onSupplierClick, onContactClick }: 
                   <p className="text-muted-foreground mb-6">
                     Connect with thousands of street food vendors
                   </p>
-                  <Button variant="supplier" size="lg" className="w-full">
+                  <Button 
+                    variant="supplier" 
+                    size="lg" 
+                    className="w-full"
+                    onClick={() => window.open('https://bitwisebinary.com', '_blank')}
+                  >
                     Start Selling
                   </Button>
                 </div>
