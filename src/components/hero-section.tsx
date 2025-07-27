@@ -184,6 +184,15 @@ export const HeroSection = ({ onVendorClick, onSupplierClick, onContactClick }: 
           </div>
         </div>
       </section>
+
+      {/* AI Chatbot Button */}
+      <Button
+        onClick={() => window.open('https://vendor-mart.zapier.app', '_blank')}
+        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-vendor to-accent shadow-lg hover:shadow-xl z-50 flex items-center justify-center group"
+        size="lg"
+      >
+        <MessageCircle className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+      </Button>
     </div>
   );
 };
