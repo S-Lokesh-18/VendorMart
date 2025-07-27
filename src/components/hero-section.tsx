@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Store, Truck, Users, MessageCircle } from "lucide-react";
+import { Store, Truck, Users, MessageCircle, Shield, Star, MapPin, ShoppingCart } from "lucide-react";
 import heroImage from "@/assets/hero-street-food.jpg";
 
 interface HeroSectionProps {
   onVendorClick: () => void;
   onSupplierClick: () => void;
+  onContactClick: () => void;
 }
 
-export const HeroSection = ({ onVendorClick, onSupplierClick }: HeroSectionProps) => {
+export const HeroSection = ({ onVendorClick, onSupplierClick, onContactClick }: HeroSectionProps) => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -27,12 +28,12 @@ export const HeroSection = ({ onVendorClick, onSupplierClick }: HeroSectionProps
               <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
                 Features
               </a>
-              <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
-                How it Works
+              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+                About
               </a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+              <button onClick={onContactClick} className="text-muted-foreground hover:text-foreground transition-colors">
                 Contact
-              </a>
+              </button>
             </nav>
           </div>
         </div>
@@ -103,34 +104,71 @@ export const HeroSection = ({ onVendorClick, onSupplierClick }: HeroSectionProps
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-vendor/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-vendor" />
+                <Shield className="w-8 h-8 text-vendor" />
               </div>
-              <h4 className="text-xl font-bold mb-3">Trusted Community</h4>
+              <h4 className="text-xl font-bold mb-3">Valid Verification</h4>
               <p className="text-muted-foreground">
-                Verified suppliers and vendors with ratings and reviews
+                All suppliers verified with proper documentation and licenses
               </p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-supplier/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="w-8 h-8 text-supplier" />
+                <Star className="w-8 h-8 text-supplier" />
               </div>
-              <h4 className="text-xl font-bold mb-3">Community Chat</h4>
+              <h4 className="text-xl font-bold mb-3">Ratings & Reviews</h4>
               <p className="text-muted-foreground">
-                Connect, share tips, and build relationships in real-time
+                Transparent feedback system for quality assurance
               </p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Store className="w-8 h-8 text-accent" />
+                <ShoppingCart className="w-8 h-8 text-accent" />
               </div>
-              <h4 className="text-xl font-bold mb-3">Local Focus</h4>
+              <h4 className="text-xl font-bold mb-3">Complete Business Solution</h4>
               <p className="text-muted-foreground">
-                Find suppliers in your area for fresh, timely deliveries
+                Everything related to your street food business in one place
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-orange-500" />
+              </div>
+              <h4 className="text-xl font-bold mb-3">Live Order Tracking</h4>
+              <p className="text-muted-foreground">
+                Real-time tracking of your orders using Google Maps integration
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-4xl font-bold mb-8">About Vendor Mart</h3>
+            <div className="text-lg text-muted-foreground space-y-6 leading-relaxed">
+              <p>
+                Vendor Mart is India's first dedicated digital marketplace connecting street food vendors 
+                with raw material suppliers. We understand the unique challenges faced by street food 
+                vendors in sourcing quality ingredients at affordable prices.
+              </p>
+              <p>
+                Our platform bridges the gap between vendors and suppliers, creating a trusted ecosystem 
+                where business relationships can flourish. With features like verified supplier profiles, 
+                real-time order tracking, community chat, and transparent ratings, we're revolutionizing 
+                how street food businesses operate.
+              </p>
+              <p>
+                From finding the perfect supplier for your momos ingredients to tracking your order in 
+                real-time on Google Maps, Vendor Mart provides everything you need to grow your street 
+                food business efficiently and sustainably.
               </p>
             </div>
           </div>
